@@ -4,23 +4,25 @@
 #
 Name     : mvn-commons-collections
 Version  : 2.0
-Release  : 3
+Release  : 4
 URL      : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
 Source0  : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
 Source1  : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.pom
-Source2  : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
-Source3  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar
-Source4  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
-Source5  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
-Source6  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.pom
-Source7  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
-Source8  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.pom
-Source9  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
-Source10  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
+Source2  : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
+Source3  : https://repo1.maven.org/maven2/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
+Source4  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar
+Source5  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
+Source6  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
+Source7  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.pom
+Source8  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
+Source9  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.pom
+Source10  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
+Source11  : https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-1.1
 Requires: mvn-commons-collections-data = %{version}-%{release}
+Requires: mvn-commons-collections-license = %{version}-%{release}
 
 %description
 No detailed description available
@@ -33,11 +35,22 @@ Group: Data
 data components for the mvn-commons-collections package.
 
 
+%package license
+Summary: license components for the mvn-commons-collections package.
+Group: Default
+
+%description license
+license components for the mvn-commons-collections package.
+
+
 %prep
+%setup -q -c -n commons-collections-2.0
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-commons-collections
+cp %{_builddir}/commons-collections-2.0/META-INF/LICENSE %{buildroot}/usr/share/package-licenses/mvn-commons-collections/e872d6dec03e52771918efa51abd521a03b1e6be
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.0
 cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
 
@@ -45,31 +58,34 @@ mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-
 cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.0/commons-collections-2.0.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.jar
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1
-cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.pom
+cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2
-cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
+cp %{SOURCE8} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2
-cp %{SOURCE8} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.pom
+cp %{SOURCE9} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2
-cp %{SOURCE9} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
+cp %{SOURCE10} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2
-cp %{SOURCE10} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
+cp %{SOURCE11} %{buildroot}/usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
 
 
 %files
@@ -79,6 +95,7 @@ cp %{SOURCE10} %{buildroot}/usr/share/java/.m2/repository/commons-collections/co
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
 /usr/share/java/.m2/repository/commons-collections/commons-collections/2.0/commons-collections-2.0.pom
+/usr/share/java/.m2/repository/commons-collections/commons-collections/2.1/commons-collections-2.1.jar
 /usr/share/java/.m2/repository/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
 /usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.jar
 /usr/share/java/.m2/repository/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
@@ -88,3 +105,7 @@ cp %{SOURCE10} %{buildroot}/usr/share/java/.m2/repository/commons-collections/co
 /usr/share/java/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.pom
 /usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
 /usr/share/java/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-commons-collections/e872d6dec03e52771918efa51abd521a03b1e6be

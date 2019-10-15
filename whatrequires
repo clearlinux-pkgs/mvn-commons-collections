@@ -1,2 +1,8 @@
 # This file contains recursive sources that require this package
+apache-flink
+apache-kafka
 apache-maven
+apache-spark
+apache-zookeeper
+cassandra
+rabbitmq-java-client
